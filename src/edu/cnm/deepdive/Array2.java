@@ -2,33 +2,33 @@ package edu.cnm.deepdive;
 
 public class Array2 {
 
-    public boolean either24(int[] nums){
+    public boolean either24(int[] nums) {
+        Boolean twos = false;
+        Boolean fours = false;
 
-        for (int i = 0; i < nums.length; i++) {
-            if ((nums[i] == 2) && (i < nums.length -1) && (nums.length > 1) && (nums[i+1] == 2));
-            return true;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 2 && nums[i + 1] == 2) twos = true;
+            if (nums[i] == 4 && nums[i + 1] == 4) fours = true;
         }
-        for (int j = 0; j < nums.length; j++) {
-            if((nums[j] == 4) && (j < nums.length-1) && (nums.length > 1) && (nums[j+1] ==4));
-            return true;
-        }
-        return false;
-
+        return twos ^ fours;
     }
 
 
 
+    public int[] pre4(int[] nums) {
 
-    public int[] pre4(int[] nums){
-
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 4) count++;
-        }
-        int[] result = new int[count];
-        for (int i = 0; i < result.length; i++)
-            result[i] = nums[i];
-
-        return result;
+        for (int i = 0; i < nums.length; i++)
+            if (nums[i] == 4 && i > 0) {
+                int[] newNums;
+                newNums = new int[i];
+                for (int j = 0; j < newNums.length; j++)
+                    newNums[j] = nums[j];
+                if (nums[0] != 4) {
+                    return newNums;
+                }
+            }
+        int[] bar;
+        bar = new int[0];
+        return bar;
     }
 }
